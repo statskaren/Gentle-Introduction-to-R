@@ -1,0 +1,584 @@
+# Introduction to R Programming: A gentle and short start
+
+# As you read in the README file, this is a short tutorial
+# that walks through the essential foundations of R programming. 
+
+# 1.1 Interacting with R --------------------------------------------------
+# Ask R to open a webpage with some hints of how to use R programming
+help.start()
+
+# To quit R use
+q()
+
+# Using R as a calculator 
+2+2
+5-3
+8^3
+6^0.5
+
+# 1.2 Working with variables ----------------------------------------------
+# Variables are used to store data in R. You can create a variable by assigning a value to it using the `<-` operator.
+
+# Create a variable named 'x' and assign it the value 10
+x <- 10
+# Create a variable named 'y' and assign it the value 5
+y <- 5
+
+# Now you can use these variables in calculations
+sum <- x + y # sum will be 15
+
+# Or substract
+difference <- x - y # difference will be 5
+
+# You can do this directly in the console as well
+x + y
+x - y
+x^y
+
+# You can create a variable to store the result
+c <- x * y # c will be 50
+
+# You can perform more complex calculations
+result <- (x^2 + y^2)^(1/2) # result will be the square root of (x^2 + y^2)
+print(result)
+
+# You can also create variables to store text (strings)
+greeting <- "Hello, R!"
+
+# Print the greeting
+print(greeting)
+
+# You can concatenate strings
+full_greeting <- paste(greeting, "Welcome to R programming.")
+
+# Print the full greeting
+print(full_greeting)
+
+# Remember that variable names are case-sensitive
+X <- 20
+
+# X is different from x
+print(X) # This will print 20
+
+# 1.3 Working with Vectors ----------------------------------------------
+
+# Vectors are a fundamental data structure in R that can hold multiple values of the same type. they are a series of items stored in a single variable.
+
+# You can create a vector using the c() function
+numbers <- c(1, 2, 3, 4, 5)
+
+# To show the vector you can use "print" or simply type the name of the vector
+print(numbers)
+numbers
+
+# You can perform operations on vectors
+squared_numbers <- numbers^2
+print(squared_numbers)
+
+# You can access individual elements of a vector using indexing. In R, indexing starts at 1. It is a integer number that indicates the position of the element in the vector.
+
+# You can do this in two ways:
+first_number <- numbers[1] # Access the first element through a "variable"
+numbers[1] # Access the first element directly
+
+# You can acess the third element
+numbers[3] # Access the third element
+
+# If you try to access an index that is out of bounds, R will return NA
+numbers[10] # Accessing the 10th element, which does not exist
+
+# You can also access multiple elements by providing a vector of indices
+subset_numbers <- numbers[c(2, 4)] # Access the 2nd and 4th elements
+
+# You can create the missing elements by assigning values to those indices
+numbers[6] <- 6 # Assign value 6 to the 6th position
+numbers[7] <- 7 # Assign value 7 to the 7th position and so on...
+
+print(numbers) # Now the vector has more elements
+
+# You can also create sequences of numbers using the ":" (colon) operator
+sequence <- 1:10 # Creates a vector with numbers from 1 to 10
+print(sequence)
+
+# Similarly, you can create a sequence with a different step using the seq() function
+seq(from = 1, to = 10, by = 2) # Creates a vector with numbers from 1 to 10 with a step of 2
+seq
+
+# You can perform operations on the entire vector
+doubled_sequence <- sequence * 2
+print(doubled_sequence)
+
+numbers[1] + numbers[2] # Sum of the first and second elements
+numbers[3] * numbers[4] # Multiplication of the third and fourth elements
+
+# It's possible join two vectors together using the c() function
+combined_vector <- c(numbers, sequence)
+print(combined_vector)
+
+# You can also find the length of a vector using the length() function
+vector_length <- length(numbers)
+print(vector_length)
+
+vector_lenght_2 <- length(sequence)
+print(vector_lenght_2)
+
+# You can remove elements from a vector by those indices
+numbers[6] <- numbers[-6] # Remove the 6th element
+print(numbers) # Now the vector has one less element
+
+# You can perform various statistical operations on vectors
+mean_value <- mean(numbers) # Calculate the mean
+print(mean_value)
+
+# Or simply
+numbers + 2
+numbers / 2
+
+# Now, you can explore the element-wise operations on vectors by yourself!
+# To do this, let's create two new vectors
+a <- c(10, 20, 30, 40, 50)
+b <- c(1, 2, 3, 4, 5)
+
+# Try to perform addition, subtraction, multiplication, and division between vectors 'a' and 'b'
+
+# For example
+a + b
+b - a
+
+# You saw that in the two cases, the operation is performed in a element-wise fashion, between the two vectors, and acts on each element independently
+
+# When the vectors have the same length, R will perform the operation element-wise without any issues. However, if the vectors have different lengths, R will recycle the shorter vector to match the length of the longer vector. This can lead to unexpected results if you're not careful.
+
+# For example, let's create two vectors of different lengths
+c <- c(1, 2, 3)
+d <- c(10, 20, 30, 40, 50)
+
+# Now, let's try to add them together
+c + d
+
+# R will recycle the elements of vector 'c' to match the length of vector 'd'
+
+# 1.4 Working with matrices ----------------------------------------------
+# Matrices are two-dimensional data structures in R that can hold multiple values of the same type. They are similar to vectors but have rows and columns
+
+# You can create a matrix using the matrix() function
+matrix_data <- matrix(1:9, nrow = 3, ncol = 3)
+
+# Note that you're creating a matrix with 3 rows (nrow) and 3 columns (ncol), filled with numbers from 1 to 9 (1:9)
+
+# Let's see the result
+print(matrix_data)
+
+# You can access individual elements of a matrix using row and column indices
+matrix_data[1, 2] # Access the element in the first row and second column
+
+# You can also access entire rows or columns
+matrix_data[1, ] # Access the first row
+
+# Note that you specified the number of rows and columns. The matrix is filled column-wise by default. If you want to fill it row-wise, you can use the byrow = TRUE argument (in R base, you can simply type T for TRUE and F for FALSE)
+
+matrix_data_2 <- matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)
+print(matrix_data_2)
+
+# 1.5 Working with different data types ----------------------------------------------
+# R supports various data types, including numeric, character, logical, and more. You can create variables of different data types and perform operations on them.
+
+# Numeric data type
+num_var <- 42.5
+
+# Character data type
+char_var <- "R programming"
+
+# Logical data type
+log_var <- TRUE
+
+# You can check the data type of a variable using the class() function
+
+print(class(num_var))  # Output: "numeric"
+print(class(char_var)) # Output: "character"
+print(class(log_var))  # Output: "logical"
+
+# You can also work with Strings (text data) in R. Strings are sequences of characters enclosed in quotes and they are treated as one single entity
+
+x1 <- c("Hello", "world!")
+x1
+y1 <- c("R", "is", "fun.")
+y1
+
+# You can concatenate strings using the paste() function
+full_string <- paste(x1, y1)
+print(full_string)
+
+# Note tha t the paste() function combine element by element in a linear fashion. If the vectors have different lengths, R will recycle the shorter vector to match the length of the longer vector.
+
+# To resolve this, you can use the collapse argument to combine all elements into a single string
+full_sentence <- paste(paste(x1, collapse = " "),
+  paste(y1, collapse = " "))
+print(full_sentence)
+
+# Now, the sentense is complete and makes more sense!
+
+# You can also use the paste0() function, which does not add spaces between the concatenated strings
+
+full_string_no_space <- paste0(x1, y1)
+print(full_string_no_space)
+
+# Among these gentle introduction, You created a lot of vectors and matrices. You can use de ls() function to see all the variables you have created in your R environment
+ls()
+
+# To remove a variable from your R environment, you can use the rm() function
+rm(x)
+
+# Now, if you check the variables again, 'x' should be gone
+
+# 1.6 Working with logical data ----------------------------------------------
+# Logical data type represents boolean values: TRUE and FALSE. You can create logical variables and perform logical operations on them
+
+# This type of data allows some comparison operations between values
+
+# For example, "equal" will be (==), "not equal" will be (!=), "greater than" will be (>), "less than" will be (<), "greater than or equal to" will be (>=), and "less than or equal to" will be (<=)
+
+a <- 2
+
+a > 5 # Check if 'a' is greater than '5'
+a == 2 # Check if 'a' is equal to '2'
+a <= 3 # Check if 'a' is less than or equal to '3'
+a != 4 # Check if 'a' is not equal to '4'
+
+# You can also combine logical expressions using logical operators: AND (&), OR (|), and NOT (!)
+b <- 7
+b > 5 & a < 3 # Check if 'b' is greater than '5' AND 'a' is less than '3'
+b < 5 | a < 3 # Check if 'b' is less than '5' OR 'a' is less than '3'
+!(a == 2) # Check if 'a' is NOT equal to '2'
+
+# Remember that the logical operator is applied to each element of a vector when used with vectors
+
+# The logical operators can be applied to matrices too
+matrix_data > 5 # Check which elements in the matrix are greater than '5'
+matrix_data <= 3 # Check which elements in the matrix are less than or equal to '3'
+
+# You can use logical vectors to subset other vectors or matrices, for example:
+numbers[numbers > 3] # Get elements in 'numbers' that are greater than '3'
+
+# This will return all elements in the 'numbers' vector that are greater than 3
+
+# One interesting thing with logical operators, is that R treats TRUE as 1 and FALSE as 0 when performing arithmetic operations
+
+# Moreover, you can use the subset function to filter data based on logical conditions
+
+subset(numbers, numbers > 2)
+
+# We're gonna see the subset function in more detail later on
+# Now, you can explore logical operations by yourself!
+
+# 2.1 A little more about inbuilt functions ----------------------------------------------
+# R has many built-in functions that you can use to perform various tasks. You can explore the available functions using the help() function that we saw in the beginning (# 1.1 Interacting with R)
+
+# We use some of them before, such as c(), lenghth(), mean(), print(), paste(), matrix(), and seq()
+
+# So, the functions have their specific names and are followed by round brackets (), and inside them you can provide arguments (inputs) to the function, separated by commas
+
+# These functions can take different types of arguments, such as numbers, strings, vectors, matrices, and more. They perform specific operations based on the provided arguments and return a result.
+
+# If you need to assign the result of a function to a variable, you can do so using the assignment operator (<-)
+
+# To see the documentation of a function, you can use the help() function or the ? operator followed by the function name
+
+# For example, help(mean) or ?mean will show you the documentation for the mean() function
+help(mean)
+?mean
+
+# 2.2 Numerical functions ----------------------------------------------
+# R provides various numerical functions to perform mathematical operations
+
+# Some common numerical functions include:
+abs(-5)           # Absolute value
+sqrt(16)          # Square root
+log(10)           # Natural logarithm
+exp(2)            # Exponential function
+log10(100)        # Logarithm base 10
+round(3.14159, 2) # Round to 2 decimal places
+
+# and so on...
+
+# As we discussed before, these functions can also be applied to vectors and matrices element-wise
+
+# Let's create a vector to see this
+v <- c(-1, -4, 9, 16)
+abs(v)        # Absolute value of each element
+log(v + 5)    # Natural logarithm of each element after adding 5
+exp(v / 10)   # Exponential function of each element divided by 10
+
+# There is more numerical functions in R, such as cos(), sin() and tan().You can explore them by yourself using the help() function or by searching online for "R numerical functions" ;)
+
+# 2.3 Statistical functions ----------------------------------------------
+# R base provides various statistical functions to perform statistical operations on data
+
+# Some common statistical functions include:
+mean(c(1, 2, 3, 4, 5))      # Calculate the mean 
+median(c(1, 2, 3, 4, 5))    # Calculate the median
+sd(c(1, 2, 3, 4, 5))        # Calculate the standard deviation
+var(c(1, 2, 3, 4, 5))       # Calculate the variance
+summary(c(10.5, 27.3, 36.8, 45.4, 50.9))   # Get a summary of the data (useful for continuous data)
+
+# These functions can also be applied to vectors and matrices to compute statistics for each element
+
+# With vectors
+data_vector <- c(12, 15, 14, 10, 18, 20)
+mean(data_vector)  # Calculate the mean of the vector
+sd(data_vector)    # Calculate the standard deviation of the vector
+var(data_vector)   # Calculate the variance of the vector
+summary(data_vector) # Get a summary of the vector
+
+# With matrices
+data_matrix <- matrix(c(1:9), nrow = 3, ncol = 3)
+mean(data_matrix)  # Calculate the mean of the matrix
+sd(data_matrix)    # Calculate the standard deviation of the matrix
+var(data_matrix)   # Calculate the variance of the matrix
+summary(data_matrix) # Get a summary of the matrix
+
+# 3.1 Working with Data frames ----------------------------------------------
+# Data frames are a fundamental data structure in R for storing tabular data. They are similar to matrices but can hold different types of data (as we saw in 1.5) in each column.
+
+# 3.2 Creating Data frames ----------------------------------------------
+# You can create a data frame using the data.frame() function
+df <- data.frame(
+  Name = c("Karen", "Bob", "Charlie"),
+  Age = c(25, 30, 22),
+  Height = c(5.5, 6.0, 5.8),
+  BMI = c(22.0, 24.5, 23.1),
+  Gender = c("F", "M", "M")
+)
+
+# Let's see the data frame
+print(df)
+
+# You can access individual columns of a data frame using the $ operator
+df$Name # Access the 'Name' column
+
+# You can also access columns using indexing
+df[, "Age"] # Access the 'Age' column
+df[, 3] # Access the 3rd column (Height)
+
+# You can access individual rows of a data frame using indexing as well
+df[1, ] # Access the first row
+df[2, ] # Access the second row, and so on
+
+# Sometimes, various grouping variables are called factors in R. Factors are used to represent categorical data (such as gender, genotype, etc) and can be created using the factor() function
+
+# For example, let's create a factor variable for the 'Gender' column in the data frame
+df$Gender <- factor(df$Gender)
+print(df$Gender)
+
+# You can check the levels of the factor using the levels() function
+levels(df$Gender)
+
+# This will show you the unique categories in the 'Gender' column (F and M in this case)
+
+# You can perform various operations on data frames, such as filtering rows, selecting columns, and summarizing data
+
+# For example, to filter rows based on a condition, you can use the subset() function
+subset(df, Age > 23) # Get rows where 'Age' is greater than 23
+
+# Moreover, you can acess the names of the columns using the colnames() function
+colnames(df) # Get the column names of the data frame
+
+# Another way, is just usin the names() function
+names(df) 
+
+# Both functions will return the same result
+
+# You can also add new columns to a data frame
+df$Weight <- c(130, 180, 150) # Add a new column 'Weight'
+print(df)
+
+# You can remove columns from a data frame by setting them to NULL
+df$BMI <- NULL # Remove the 'BMI' column
+print(df)
+
+# Alternatively, you can see a specific valour calling the column and the row
+df[1, "Height"] # Access the 'Height' of the first row
+
+# 3.3 Reading Data frames ----------------------------------------------
+# You saw how to creat a data frame manually, but in real life scenarios, you will often read data from external files, such as CSV (Comma-Separated Values) files or Excel files, this last one requiries additional packages. The read.table() function is a versatile function that can read data from various file formats, including CSV files.
+
+# To read a CSV file into a data frame, you can use the read.csv() function
+
+# For this example, you'll use the CSV file downloaded from the GitHub repository associated with this short course. Make sure you have downloaded the file "athletes_data.csv" and placed it in your working directory.
+
+# Read the CSV file into a data frame
+athletes_df <- read.csv("athletes_data.csv") # here you need to provide the correct path to the file if it's not in your working directory
+
+# To set R's working directory, you can select Session -> Set Working Directory -> Choose Directory... from RStudio's menu and then select the desired folder.
+
+# Let's see the first few rows of the data frame
+head(athletes_df)
+
+# You can also use the str() function to see the structure of the data frame
+str(athletes_df) # This will show you the data types of each column and a preview of the data
+
+# You can use the dim() function to see the dimensions of the data frame (number of rows and columns)
+dim(athletes_df) # This will return a vector with the number of rows and columns
+
+# 4.1 Manipulating data and data frames ----------------------------------------------
+# R provides various functions and packages to manipulate data frames effectively. One of the most popular packages for data manipulation is dplyr, which is part of the tidyverse collection of packages. We're not going to use it here, but you can explore it later on your own.
+
+# However, you can perform basic data manipulation tasks using base R functions. Some common data manipulation tasks include:
+
+# Suppose that you are interested to see some statistics about the athletes' heights in the dataset you just loaded, specifically, statistics that describe the distribution of heights, such as the mean, median, standard deviation, minimum, maximum, and quartiles.
+
+# As you saw, you can use the summary() function to get a quick overview of the 'Height' column in the data frame
+summary(athletes_df$Height) # This will give you the minimum, 1st quartile, median, mean, 3rd quartile, and maximum values of the 'Height' column.
+
+# You can also calculate specific statistics using functions like mean(), median(), sd(), min(), and max()
+mean_height <- mean(athletes_df$Height, na.rm = TRUE) # Calculate the mean height, removing NA values
+
+median_height <- median(athletes_df$Height, na.rm = TRUE) # Calculate the median height, removing NA values
+
+# If you need to see the first five values of the BMI column, you can run:
+head(athletes_df$BMI, 5) # Show the first five values of the 'BMI' column
+
+# You can also specify the rows and the columns
+athletes_df[1:5, c(2,7)] # Show the first five values of the second and seventh columns using indexing
+
+# As you learned before (in the section 1.3), you can use a sequence to access specific rows and a vector to access the columns
+
+# Another useful function is the subset() function, which allows you to filter rows based on specific conditions, as you saw in the 1.3 and 1.6 sections
+subset(athletes_df, Age > 25) # Get rows where 'Age' is greater than 25
+
+# Note that at this moment you are using R base functions that you saw along this short introduction
+
+# So, another alternative to filter rows based on a condition is to use which() function
+which(athletes_df$Age > 25) # Get the places in the vector where 'Age' is greater than 25
+
+# This will return the indices of the rows where the condition is TRUE. You can then use these indices to subset the data frame
+
+filtered_athletes <- athletes_df[which(athletes_df$Age > 25), ] # Subset the data frame using the indices
+print(filtered_athletes)
+
+# You can also sort the data frame based on a specific column using the order() function
+sorted_athletes <- athletes_df[order(athletes_df$Height), ] # Sort the data frame by 'Height' in ascending order
+print(sorted_athletes)
+
+# If you want to sort in descending order, you can use the decreasing = TRUE argument
+sorted_athletes_desc <- athletes_df[order(athletes_df$Height, decreasing = TRUE), ] # Sort the data frame by 'Height' in descending order
+print(sorted_athletes_desc)
+
+# It's possible to combine logical expressions to filter data based on multiple conditions
+subset(athletes_df, BMI > 20 & Age < 30) # Get rows where 'BMI' is greater than 20 AND 'Age' is less than 30
+
+# This will return all rows where both conditions are met
+
+# Now, suppose that you are handling with huge ranges of values in the 'Weight' column, and you saw in the summary() function that the maximum weight is 22000 kilograms. To make the values more manageable, you can use a log scale. So you can create new columns with the data log-transformed
+
+athletes_df$Log_Weight <- log(athletes_df$Weight) # Create a new column with the natural logarithm of 'Weight'
+
+head(athletes_df$Log_Weight) # Show the first few values of the new column
+
+# Considering everything that you learned until now, you can perform some calculations
+
+# For example, you can calculate the mean height of athletes with a BMI greater than 25
+mean_height_bmi_gt_25 <- mean(
+  athletes_df$Height[athletes_df$BMI > 25],
+  na.rm = TRUE
+)
+
+print(mean_height_bmi_gt_25) # This will return the mean height of athletes with a BMI greater than 25, removing any NA values
+
+# You can also calculate the standard deviation of weight for athletes older than 30
+sd_weight_age_gt_30 <- sd(
+  athletes_df$Weight[athletes_df$Age > 30],
+  na.rm = TRUE
+)
+
+print(sd_weight_age_gt_30) # This will return the standard deviation of weight for athletes older than 30, removing any NA values
+
+# You made some modifications to the data frame, such as adding new columns. If you want to save the modified data frame to a new CSV file, you can use the write.csv() function
+write.csv(athletes_df, "modified_athletes_data.csv", row.names = TRUE) # Save the modified data frame to a new CSV file with row names
+
+# This will create a new CSV file named "modified_athletes_data.csv" in your working directory containing the modified data frame
+
+# Remember to change the file path if you want to save it in a different location
+
+# 5.1 Working with graphs! ----------------------------------------------
+# R provides various functions and packages to create graphs and visualizations. One of the most popular packages for data visualization is ggplot2, which is part of the tidyverse collection of packages. We're not going to use it here, but you can explore it later on your own.
+
+# However, you can create basic graphs using base R functions. Some common types of graphs include:
+
+# Scatter plot
+plot(athletes_df$Height, athletes_df$Weight,
+  main = "Scatter Plot of Height vs Weight",
+  xlab = "Height (meters)",
+  ylab = "Weight (kilograms)",
+  col = "coral3",
+  pch = 19
+)
+
+# The main argument sets the title of the plot, xlab and ylab set the labels for the x and y axes, col sets the color of the points, and pch sets the shape of the points (use help(pch) to see the available point shapes)
+
+# Histogram
+hist(athletes_df$Age,
+  main = "Histogram of Ages",
+  xlab = "Age (years)",
+  col = "lightgreen",
+  border = "black",
+  breaks = 10
+)
+
+# Here, in the histogram, the main argument also sets the title of the histogram, xlab sets the label for the x-axis, col sets the color of the bars, border sets the color of the bar borders, and breaks sets the number of bins in the histogram
+
+# Boxplot
+boxplot(athletes_df$BMI,
+  main = "Box Plot of BMI",
+  ylab = "BMI",
+  col = "cadetblue"
+)
+
+# In the box plot, the arguments are the same used in the previous graphs
+
+# I have few nice tips for this topic! When creating graphs in R, you can customize various aspects of the plot, such as titles, labels, colors, and point shapes. You can also save your plots to external files using functions like png(), jpeg(), or pdf().
+
+# You can run colors() function to see all the available colors in R
+
+# Another interesting thing is that you can overlay multiple plots on the same graph using the points() or lines() functions after creating the initial plot
+
+# For example, let's create a scatter plot of Height vs Weight and then overlay a regression line
+plot(athletes_df$Height, athletes_df$Weight,
+  main = "Scatter Plot of Height vs Weight with Regression Line",
+  xlab = "Height (meters)",
+  ylab = "Weight (kilograms)",
+  col = "coral3",
+  pch = 19
+)
+
+# Fit a linear model
+model <- lm(Weight ~ Height, data = athletes_df)
+
+# Add the regression line to the plot
+abline(model, col = "royalblue4", lwd = 2)
+
+# This will create a scatter plot of Height vs Weight and overlay a blue regression line representing the linear relationship between the two variables
+
+# Easy peasy, right? 
+
+# Remember that you created a new CSV file named "modified_athletes_data.csv" in your working directory containing the modified data frame? You can use this file to create more graphs and visualizations based on the modified data
+modified_athletes_df <- read.csv("modified_athletes_data.csv")
+
+# Histogram of the logarithm of Weight
+hist(modified_athletes_df$Log_Weight,
+  main = "Histogram of Logarithm of Weight",
+  xlab = "Log(Weight)",
+  col = "turquoise4" ,
+  border = "black",
+  breaks = 10
+)
+
+# To save the plots you can use the png() function before creating the plot and then use dev.off() to save the file
+
+# You can use the pdf() function as well if you want to save the plot as a PDF file, and run the dev.off() too
+
+# The figures generated in the section are also disponible in the GitHub repository associated with this short course, in the folder named "figures". Use them to compare with your own results!
+
+# 6.1 This is the end, beautiful friend ----------------------------------------------
+
+# This is the end of this short introduction to R programming. I hope you enjoyed it and learned a lot! Keep exploring and practicing R to become more proficient in data analysis and visualization. Remember that this code was written by an student like you, so don't be afraid to make mistakes and learn from them. If you see something that you don't understand, look for it online or in R's documentation. There are many resources available to help you learn R programming. Happy coding! 
