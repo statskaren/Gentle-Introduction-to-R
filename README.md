@@ -7,17 +7,19 @@ It’s ideal for beginners, students, and anyone starting to explore data analys
 
 Section Overview:
 
-1.1	Interacting with R,	Basic commands and using R as a calculator
-1.2	Working with Variables,	Assigning and manipulating objects
-1.3	Vectors	Creating, accessing, and modifying vectors
-1.4	Matrices:	2D data structures and indexing
-1.5	Data Types: Numeric, character, and logical data
-1.6	Logical Operations,	Boolean expressions and filtering
-2.1 to 2.3	Functions	Built-in functions, numerical and statistical operations
-3.1 to 3.3	Data Frames	Creating, reading, and modifying tabular data
-4.1	Manipulating Data	Filtering, sorting, and computing descriptive stats
-5.1	Graphs	Plot, hist, and boxplot in base R
-6.1	Closing	Final notes and encouragement to keep learning
+| Section | Topic | Description |
+|----------|--------|-------------|
+| **1.1** | Interacting with R | Basic commands and using R as a calculator |
+| **1.2** | Working with Variables | Assigning and manipulating objects |
+| **1.3** | Vectors | Creating, accessing, and modifying vectors |
+| **1.4** | Matrices | 2D data structures and indexing |
+| **1.5** | Data Types | Numeric, character, and logical data |
+| **1.6** | Logical Operations | Boolean expressions and filtering |
+| **2.1–2.3** | Functions | Built-in functions, numerical and statistical operations |
+| **3.1–3.3** | Data Frames | Creating, reading, and modifying tabular data |
+| **4.1** | Manipulating Data | Filtering, sorting, and computing descriptive stats |
+| **5.1** | Graphs | Plot, hist, and boxplot in base R |
+| **6.1** | Closing | Final notes and encouragement to keep learning |
 
 ---
   
