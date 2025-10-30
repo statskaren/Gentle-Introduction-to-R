@@ -1,34 +1,58 @@
-# Introduction to R Programming: A gentle and short start
+---
+title: "Introduction to R Programming: A Gentle and Short Start"
+author: "Karen Gomes"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    theme: readable
+  word_document:
+    reference_docx: "template.odt"
+---
 
-# As you read in the README file, this is a short tutorial
-# that walks through the essential foundations of R programming. 
+```{r setup, include=FALSE}
+# Configuração inicial do documento
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
 
-# 1.1 Interacting with R --------------------------------------------------
+# 1.1 Interacting with R
+
+As you read in the README file, this is a short tutorial that walks through the essential foundations of R programming.
+
+```{r open_help, echo=TRUE}
 # Ask R to open a webpage with some hints of how to use R programming
 help.start()
+```
 
+```{r quit_r, eval=FALSE}
 # To quit R use
 q()
+```
 
+```{r calculator, echo=TRUE}
 # Using R as a calculator 
-2+2
-5-3
-8^3
-6^0.5
+2 + 2
+5 - 3
+8 ^ 3
+6 ^ 0.5
+```
 
-# 1.2 Working with variables ----------------------------------------------
-# Variables are used to store data in R. You can create a variable by assigning a value to it using the `<-` operator.
+# 1.2 Working with Variables
 
-# Create a variable named 'x' and assign it the value 10
+Variables are used to store data in R. You can create a variable by assigning a value to it using the `<-` operator.
+
+```{r variables, echo=TRUE}
+# create a variable named 'x' and assign it the value 10
 x <- 10
-# Create a variable named 'y' and assign it the value 5
+
+# create another variable 'y' and assign it the value 5
 y <- 5
 
-# Now you can use these variables in calculations
-sum <- x + y # sum will be 15
-
-# Or substract
-difference <- x - y # difference will be 5
+# Now you can use these variables in calculations, for example, sum, difference, and more
+sum <- x + y
+difference <- x - y
 
 # You can do this directly in the console as well
 x + y
@@ -41,12 +65,13 @@ c <- x * y # c will be 50
 # You can perform more complex calculations
 result <- (x^2 + y^2)^(1/2) # result will be the square root of (x^2 + y^2)
 print(result)
+```
 
+```{r strings, echo=TRUE}
 # You can also create variables to store text (strings)
 greeting <- "Hello, R!"
-
-# Print the greeting
-print(greeting)
+full_greeting <- paste(greeting, "Welcome to R programming.")
+print(full_greeting)
 
 # You can concatenate strings
 full_greeting <- paste(greeting, "Welcome to R programming.")
@@ -56,14 +81,15 @@ print(full_greeting)
 
 # Remember that variable names are case-sensitive
 X <- 20
-
 # X is different from x
 print(X) # This will print 20
+```
 
-# 1.3 Working with Vectors ----------------------------------------------
+# 1.3 Working with Vectors
 
-# Vectors are a fundamental data structure in R that can hold multiple values of the same type. they are a series of items stored in a single variable.
+Vectors are one-dimensional data structures that hold elements of the same type. They are a series of items stored in a single variable.
 
+```{r vectors, echo=TRUE}
 # You can create a vector using the c() function
 numbers <- c(1, 2, 3, 4, 5)
 
@@ -157,10 +183,13 @@ d <- c(10, 20, 30, 40, 50)
 c + d
 
 # R will recycle the elements of vector 'c' to match the length of vector 'd'
+```
 
-# 1.4 Working with matrices ----------------------------------------------
-# Matrices are two-dimensional data structures in R that can hold multiple values of the same type. They are similar to vectors but have rows and columns
+# 1.4 Working with matrices
 
+Matrices are two-dimensional data structures in R that can hold multiple values of the same type. They are similar to vectors but have rows and columns
+
+```{r matrices, echo=TRUE}
 # You can create a matrix using the matrix() function
 matrix_data <- matrix(1:9, nrow = 3, ncol = 3)
 
@@ -179,10 +208,13 @@ matrix_data[1, ] # Access the first row
 
 matrix_data_2 <- matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)
 print(matrix_data_2)
+```
 
-# 1.5 Working with different data types ----------------------------------------------
-# R supports various data types, including numeric, character, logical, and more. You can create variables of different data types and perform operations on them.
+# 1.5 Working with different data types
 
+R supports various data types, including numeric, character, logical, and more. You can create variables of different data types and perform operations on them.
+
+```{r data_types, echo=TRUE}
 # Numeric data type
 num_var <- 42.5
 
@@ -230,12 +262,13 @@ ls()
 rm(x)
 
 # Now, if you check the variables again, 'x' should be gone
+```
 
-# 1.6 Working with logical data ----------------------------------------------
-# Logical data type represents boolean values: TRUE and FALSE. You can create logical variables and perform logical operations on them
+# 1.6 Working with logical data
 
-# This type of data allows some comparison operations between values
+Logical data type represents boolean values: TRUE and FALSE. You can create logical variables and perform logical operations on them. This type of data allows some comparison operations between values.
 
+```{r logical_operations, echo=TRUE}
 # For example, "equal" will be (==), "not equal" will be (!=), "greater than" will be (>), "less than" will be (<), "greater than or equal to" will be (>=), and "less than or equal to" will be (<=)
 
 a <- 2
@@ -270,27 +303,33 @@ subset(numbers, numbers > 2)
 
 # We're gonna see the subset function in more detail later on
 # Now, you can explore logical operations by yourself!
+```
 
-# 2.1 A little more about inbuilt functions ----------------------------------------------
-# R has many built-in functions that you can use to perform various tasks. You can explore the available functions using the help() function that we saw in the beginning (# 1.1 Interacting with R)
+# 2.1 A little more about inbuilt functions
 
-# We use some of them before, such as c(), lenghth(), mean(), print(), paste(), matrix(), and seq()
+R has many built-in functions that you can use to perform various tasks. You can explore the available functions using the help() function that we saw in the beginning (# 1.1 Interacting with R)
+We used some of them before, such as c(), lenghth(), mean(), print(), paste(), matrix(), and seq()
 
-# So, the functions have their specific names and are followed by round brackets (), and inside them you can provide arguments (inputs) to the function, separated by commas
+So, the functions have their specific names and are followed by round brackets (), and inside them you can provide arguments (inputs) to the function, separated by commas
 
-# These functions can take different types of arguments, such as numbers, strings, vectors, matrices, and more. They perform specific operations based on the provided arguments and return a result.
+These functions can take different types of arguments, such as numbers, strings, vectors, matrices, and more. They perform specific operations based on the provided arguments and return a result.
+If you need to assign the result of a function to a variable, you can do so using the assignment operator (<-)
 
-# If you need to assign the result of a function to a variable, you can do so using the assignment operator (<-)
+To see the documentation of a function, you can use the help() function or the ? operator followed by the function name
 
-# To see the documentation of a function, you can use the help() function or the ? operator followed by the function name
+```{r functions, echo=TRUE}
+mean(c(2, 4, 6, 8))
+sum(c(1, 3, 5, 7))
+sqrt(81)
 
 # For example, help(mean) or ?mean will show you the documentation for the mean() function
 help(mean)
 ?mean
+```
+# 2.2 Numerical functions
+R provides various numerical functions to perform mathematical operations
 
-# 2.2 Numerical functions ----------------------------------------------
-# R provides various numerical functions to perform mathematical operations
-
+```{r numerical functions, cho=TRUE}
 # Some common numerical functions include:
 abs(-5)           # Absolute value
 sqrt(16)          # Square root
@@ -298,7 +337,6 @@ log(10)           # Natural logarithm
 exp(2)            # Exponential function
 log10(100)        # Logarithm base 10
 round(3.14159, 2) # Round to 2 decimal places
-
 # and so on...
 
 # As we discussed before, these functions can also be applied to vectors and matrices element-wise
@@ -310,10 +348,12 @@ log(v + 5)    # Natural logarithm of each element after adding 5
 exp(v / 10)   # Exponential function of each element divided by 10
 
 # There is more numerical functions in R, such as cos(), sin() and tan().You can explore them by yourself using the help() function or by searching online for "R numerical functions" ;)
+```
 
-# 2.3 Statistical functions ----------------------------------------------
-# R base provides various statistical functions to perform statistical operations on data
+# 2.3 Statistical functions
+R provides various statistical functions to perform statistical operations on data.
 
+```{r statistical functions, echo=TRUE}
 # Some common statistical functions include:
 mean(c(1, 2, 3, 4, 5))      # Calculate the mean 
 median(c(1, 2, 3, 4, 5))    # Calculate the median
@@ -336,11 +376,13 @@ mean(data_matrix)  # Calculate the mean of the matrix
 sd(data_matrix)    # Calculate the standard deviation of the matrix
 var(data_matrix)   # Calculate the variance of the matrix
 summary(data_matrix) # Get a summary of the matrix
+```
 
-# 3.1 Working with Data frames ----------------------------------------------
-# Data frames are a fundamental data structure in R for storing tabular data. They are similar to matrices but can hold different types of data (as we saw in 1.5) in each column.
+# 3.1 Working with Data frames
 
-# 3.2 Creating Data frames ----------------------------------------------
+Data frames are a fundamental data structure in R for storing tabular data. They are similar to matrices but can hold different types of data (as YOU saw in 1.5) in each column. They store data in tabular form (like Excel).
+
+```{r data_frames, echo=TRUE}
 # You can create a data frame using the data.frame() function
 df <- data.frame(
   Name = c("Karen", "Bob", "Charlie"),
@@ -398,14 +440,16 @@ print(df)
 
 # Alternatively, you can see a specific valour calling the column and the row
 df[1, "Height"] # Access the 'Height' of the first row
+```
 
-# 3.3 Reading Data frames ----------------------------------------------
-# You saw how to creat a data frame manually, but in real life scenarios, you will often read data from external files, such as CSV (Comma-Separated Values) files or Excel files, this last one requiries additional packages. The read.table() function is a versatile function that can read data from various file formats, including CSV files.
+# 3.3 Reading Data frames
+You saw how to creat a data frame manually, but in real life scenarios, you will often read data from external files, such as CSV (Comma-Separated Values) files or Excel files, this last one requiries additional packages. The read.table() function is a versatile function that can read data from various file formats, including CSV files.
 
-# To read a CSV file into a data frame, you can use the read.csv() function
+To read a CSV file into a data frame, you can use the read.csv() function
 
-# For this example, you'll use the CSV file downloaded from the GitHub repository associated with this short course. Make sure you have downloaded the file "athletes_data.csv" and placed it in your working directory.
+For this example, you'll use the CSV file downloaded from the GitHub repository associated with this short course. Make sure you have downloaded the file "athletes_data.csv" and placed it in your working directory.
 
+```{r read_data_frame, echo=TRUE}
 # Read the CSV file into a data frame
 athletes_df <- read.csv("athletes_data.csv") # here you need to provide the correct path to the file if it's not in your working directory
 
@@ -419,14 +463,16 @@ str(athletes_df) # This will show you the data types of each column and a previe
 
 # You can use the dim() function to see the dimensions of the data frame (number of rows and columns)
 dim(athletes_df) # This will return a vector with the number of rows and columns
+```
 
-# 4.1 Manipulating data and data frames ----------------------------------------------
-# R provides various functions and packages to manipulate data frames effectively. One of the most popular packages for data manipulation is dplyr, which is part of the tidyverse collection of packages. We're not going to use it here, but you can explore it later on your own.
+# 4.1 Manipulating Data
+R provides various functions and packages to manipulate data frames effectively. One of the most popular packages for data manipulation is dplyr, which is part of the tidyverse collection of packages. We're not going to use it here, but you can explore it later on your own.
 
-# However, you can perform basic data manipulation tasks using base R functions. Some common data manipulation tasks include:
+However, you can perform basic data manipulation tasks using base R functions. Some common data manipulation tasks include:
 
-# Suppose that you are interested to see some statistics about the athletes' heights in the dataset you just loaded, specifically, statistics that describe the distribution of heights, such as the mean, median, standard deviation, minimum, maximum, and quartiles.
+Suppose that you are interested to see some statistics about the athletes' heights in the dataset you just loaded, specifically, statistics that describe the distribution of heights, such as the mean, median, standard deviation, minimum, maximum, and quartiles.
 
+```{r manipulating_data, echo=TRUE}
 # As you saw, you can use the summary() function to get a quick overview of the 'Height' column in the data frame
 summary(athletes_df$Height) # This will give you the minimum, 1st quartile, median, mean, 3rd quartile, and maximum values of the 'Height' column.
 
@@ -499,11 +545,14 @@ write.csv(athletes_df, "modified_athletes_data.csv", row.names = TRUE) # Save th
 # This will create a new CSV file named "modified_athletes_data.csv" in your working directory containing the modified data frame
 
 # Remember to change the file path if you want to save it in a different location
+```
 
-# 5.1 Working with graphs! ----------------------------------------------
-# R provides various functions and packages to create graphs and visualizations. One of the most popular packages for data visualization is ggplot2, which is part of the tidyverse collection of packages. We're not going to use it here, but you can explore it later on your own.
+# 5.1 Working with graphs!
 
-# However, you can create basic graphs using base R functions. Some common types of graphs include:
+R provides various functions and packages to create graphs and visualizations. One of the most popular packages for data visualization is ggplot2, which is part of the tidyverse collection of packages. We're not going to use it here, but you can explore it later on your own.
+
+```{r graphs, echo=TRUE, fig.cap="Example of basic plots in R"}
+# You can create basic graphs using base R functions. Some common types of graphs include:
 
 # Scatter plot
 plot(athletes_df$Height, athletes_df$Weight,
@@ -572,13 +621,14 @@ hist(modified_athletes_df$Log_Weight,
   border = "black",
   breaks = 10
 )
+```
+To save the plots you can use the png() function before creating the plot and then use dev.off() to save the file
+You can use the pdf() function as well if you want to save the plot as a PDF file, and run the dev.off() too
 
-# To save the plots you can use the png() function before creating the plot and then use dev.off() to save the file
+The figures generated in the section are also disponible in the GitHub repository associated with this short course, in the folder named "figures". Use them to compare with your own results!
 
-# You can use the pdf() function as well if you want to save the plot as a PDF file, and run the dev.off() too
+# 6.1 This is the end, beautiful friend
 
-# The figures generated in the section are also disponible in the GitHub repository associated with this short course, in the folder named "figures". Use them to compare with your own results!
+This is the end of this short introduction to R programming. I hope you enjoyed it and learned a lot! Keep exploring and practicing R to become more proficient in data analysis and visualization. Remember that this code was written by an student like you, so don't be afraid to make mistakes and learn from them. If you see something that you don't understand, look for it online or in R's documentation. There are many resources available to help you learn R programming. Happy coding! 
 
-# 6.1 This is the end, beautiful friend ----------------------------------------------
-
-# This is the end of this short introduction to R programming. I hope you enjoyed it and learned a lot! Keep exploring and practicing R to become more proficient in data analysis and visualization. Remember that this code was written by an student like you, so don't be afraid to make mistakes and learn from them. If you see something that you don't understand, look for it online or in R's documentation. There are many resources available to help you learn R programming. Happy coding! 
+> *Created by Karen Gomes, 2025.*
