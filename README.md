@@ -60,8 +60,11 @@ Section Overview:
 
   Now, we're gonna see how to reproduce, step by step
 
-# 1. Download or clone this repository:
+# 1. Download or clone this repository and install the packages:
 git clone https://github.com/statskaren/Gentle-Introduction-to-R.git
+
+Install the required packages if you haven't already:
+library.install(c("rmarkdown", "knit", "tidyverse"))
 
 # 2. Open in RStudio:  
 Open the introduction_to_R.Rmd file in RStudio.
@@ -71,6 +74,9 @@ rmarkdown::render("introduction_to_R.Rmd",
                   output_format = "odt_document",
                   output_file = "Introduction_to_R.odt",
                   output_options = list(reference_odt = "template.odt"))
+                  
+If you prefer, you can render the document directly from RStudio by clicking the "Knit" button 
+and selecting "ODT" as the output format.
                   
 📝 Note:
 Make sure that the file template.odt is in the same directory as your .Rmd.
