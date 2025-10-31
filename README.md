@@ -11,12 +11,9 @@
 
 ---
 
- **# Author:**
-  Karen Gomes
-📧 kare.kgomes@usp.br
-🎓 MSc Student in Public Health – University of São Paulo
-🏥 HTA Assistant – NATS/UNIFESP-Diadema
-💻 Focus: R | Biostatistics | Causal Inference
+ | 👩‍💻 **Karen Gomes** | 🎓 **MSc Student** | 🏥 **HTA Assistant** |
+|----------------------|------------------|----------------------|
+| 📧 kare.kgomes@usp.br | Public Health – USP | NATS/UNIFESP-Diadema |
 
 ---
 
