@@ -3,16 +3,16 @@ title: 'Introduction to R Programming: A Gentle and Short Start'
 author: "Karen Gomes"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+   odt_document:
+    reference_odt: template.odt
+   pdf_document:
+    toc: true
+    toc_depth: '2'
+   html_document:
     toc: true
     toc_depth: 2
     number_sections: true
     theme: readable
-  pdf_document:
-    toc: true
-    toc_depth: '2'
-  odt_document:
-    reference_odt: template.odt
 ---
 
 ```{r setup, include=FALSE}
@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, class.sourc
 
 As you read in the README file, this is a short tutorial that walks through the essential foundations of R programming.
 
-```{r open_help, echo=TRUE}
+```{r open_help, echo=TRUE, eval = FALSE}
 # Ask R to open a webpage with some hints of how to use R programming
 help.start()
 ```
@@ -111,7 +111,7 @@ first_number <- numbers[1] # Access the first element through a "variable"
 numbers[1] # Access the first element directly
 
 # You can acess the third element
-numbers[3] # Access the third element
+numbers[3] 
 
 # If you try to access an index that is out of bounds, R will return NA
 numbers[10] # Accessing the 10th element, which does not exist
@@ -229,9 +229,9 @@ log_var <- TRUE
 
 # You can check the data type of a variable using the class() function
 
-print(class(num_var))  # Output: "numeric"
-print(class(char_var)) # Output: "character"
-print(class(log_var))  # Output: "logical"
+print(class(num_var))  
+print(class(char_var)) 
+print(class(log_var)) 
 
 # You can also work with Strings (text data) in R. Strings are sequences of characters enclosed in quotes and they are treated as one single entity
 
@@ -325,8 +325,11 @@ subset(numbers, numbers > 2)
 mean(c(2, 4, 6, 8))
 sum(c(1, 3, 5, 7))
 sqrt(81)
+```
 
-# For example, help(mean) or ?mean will show you the documentation for the mean() function
+For example, help(mean) or ?mean will show you the documentation for the mean() function
+
+```{r help_mean, echo=TRUE, eval=FALSE}
 help(mean)
 ?mean
 ```
