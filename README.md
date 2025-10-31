@@ -11,9 +11,17 @@
 
 ---
 
- | 👩‍💻 **Karen Gomes** | 🎓 **MSc Student** | 🏥 **HTA Assistant** |
-|----------------------|------------------|----------------------|
-| 📧 kare.kgomes@usp.br | Public Health – USP | NATS/UNIFESP-Diadema |
+<div align="center">
+
+<h2>Karen Gomes</h2>
+
+<p>
+📧 <strong>kare.kgomes@usp.br</strong> <br>
+🎓 MSc Student in Public Health – <em>University of São Paulo</em> <br>
+🏥 HTA Assistant – NATS/UNIFESP-Diadema <br>
+</p>
+
+</div>
 
 ---
 
